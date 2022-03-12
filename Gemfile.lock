@@ -72,6 +72,9 @@ GEM
       msgpack (~> 1.2)
     builder (3.2.4)
     byebug (11.1.3)
+    cable_ready (5.0.0.pre8)
+      rails (>= 5.2)
+      thread-local (>= 1.1.0)
     coderay (1.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
@@ -220,10 +223,17 @@ GEM
       rubocop-performance (= 1.13.3)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
+    stimulus_reflex (3.5.0.pre8)
+      cable_ready (= 5.0.0.pre8)
+      nokogiri
+      rack
+      rails (>= 5.2)
+      redis
     strscan (3.0.1)
     tailwindcss-rails (2.0.8-arm64-darwin)
       railties (>= 6.0.0)
     thor (1.2.1)
+    thread-local (1.1.0)
     timeout (0.2.0)
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
@@ -259,6 +269,7 @@ DEPENDENCIES
   sprockets-rails
   standard
   stimulus-rails
+  stimulus_reflex (= 3.5.0.pre8)
   tailwindcss-rails
   turbo-rails
   web-console
