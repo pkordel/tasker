@@ -42,7 +42,7 @@ module Tasker
         helper_specs:     false,
         routing_specs:    false,
         request_specs:    true,
-        controller_specs: true
+        controller_specs: false
     end
   end
 end
