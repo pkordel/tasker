@@ -1,10 +1,20 @@
 <% @lists.each do |list| %>
-<div class="block p-6 max-w-md bg-gray-300 rounded-lg border border-gray-400 shadow-md hover:bg-gray-100">
-  <h5 class="mb-5 text-2xl font-bold tracking-tight text-gray-900"><%= list.name %></h5>
-  <p class="font-normal text-gray-700">
-    <ul class="w-148 text-md font-medium text-gray-900 bg-white rounded-lg border border-gray-400">
+<div class="p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+  <div class="flex justify-between items-center mb-4">
+    <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white"><%= list.name %></h5>
+  </div>
+  <div class="flow-root">
+    <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
       <%= render list.tasks.incomplete_first %>
     </ul>
-  </p>
+  </div>
+  <div class="flex justify-between items-center mb-4">
+    <%= form_with model: Task.new, url: '', class: "space-y-6", data: { reflex: "submit->Task#create", list_id: list.id } do |form| %>
+      <div class="flex mt-4 space-x-2 lg:mt-6">
+        <%= form.text_field :name, skip_label: true, class: "flex-fill bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white", placeholder: "What needs to be done?" %>
+        <%= form.submit "Add task", class: "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+      </div>
+    <% end %>
+  </div>
 </div>
 <% end %>
