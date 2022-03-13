@@ -4,8 +4,8 @@
     <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white"><%= list.name %></h5>
   </div>
   <div class="flow-root">
-    <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-      <%= render list.tasks.incomplete_first %>
+    <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700" data-target="list.tasks">
+      <%= render list.tasks %>
     </ul>
   </div>
   <div class="flex justify-between items-center mb-4">

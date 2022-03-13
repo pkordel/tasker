@@ -1,4 +1,4 @@
-<li data-controller="task" class="py-3 sm:py-4">
+<li data-controller="task" data-id="<%= task.id %>" class="py-3 sm:py-4 <%= 'completed' if task.complete? %>">
   <div class="flex justify-between items-center space-x-4">
     <div class="flex-shrink-0 custom-control custom-checkbox <%= 'line-through' if task.complete? %>">
       <input type="checkbox" class="custom-control-input" id="<%= dom_id(task) %>" data-id="<%= task.id %>" data-reflex="change->TaskReflex#toggle_completed" <%= 'checked' if task.complete? %>>

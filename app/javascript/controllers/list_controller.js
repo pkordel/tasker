@@ -1,20 +1,35 @@
-import ApplicationController from "./application_controller";
+import { Controller } from "stimulus";
+import StimulusReflex from "stimulus_reflex";
+import Sortable from "sortablejs";
 
-export default class extends ApplicationController {
-  static targets = ["form"]
+export default class extends Controller {
+  static targets = ["form", "tasks"];
+
+  connect() {
+    StimulusReflex.register(this);
+
+    Sortable.create(this.tasksTarget, {
+      filter: ".completed",
+      onEnd: (event) => this.reorder(event),
+    });
+  }
+
+  reorder(event) {
+    this.stimulate("TaskReflex#reorder", event.item, event.newIndex);
+  }
 
   beforeCreateTask(element) {
-    element.querySelectorAll("input").forEach(input => {
-      input.blur()
+    element.querySelectorAll("input").forEach((input) => {
+      input.blur();
     });
-    element.classList.add("disabled:opacity-75")
+    element.classList.add("disabled:opacity-75");
   }
 
   createTaskError(element, name, error) {
-    alert(error)
+    alert(error);
   }
 
   createTaskSuccess() {
-    this.formTarget.reset()
+    this.formTarget.reset();
   }
 }

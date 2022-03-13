@@ -55,3 +55,5 @@ group :development do
 end
 
 gem "stimulus_reflex", "= 3.5.0.pre8"
+
+gem "acts_as_list", "~> 1.0"
