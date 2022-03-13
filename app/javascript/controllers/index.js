@@ -6,7 +6,6 @@ import { cable } from "@hotwired/turbo-rails"
 
 // Eager load all controllers defined in the import map under controllers/**/*_controller
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
-// import consumer from '../channels/consumer'
 import controller from '../controllers/application_controller'
 eagerLoadControllersFrom("controllers", application)
 
@@ -14,6 +13,7 @@ eagerLoadControllersFrom("controllers", application)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
 const consumer = await cable.getConsumer()
-StimulusReflex.initialize(application, { consumer, controller, isolate: true })
+application.consumer = consumer
+StimulusReflex.initialize(application, { controller, isolate: true })
 // StimulusReflex.debug = process.env.RAILS_ENV === 'development'
 StimulusReflex.debug = true

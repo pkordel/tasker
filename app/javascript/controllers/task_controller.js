@@ -1,7 +1,11 @@
 import ApplicationController from "./application_controller";
 
 export default class extends ApplicationController {
-  connect() {
-    StimulusReflex.register(this)
+  destroy(event) {
+    const confirmation = confirm("Are you sure?")
+
+    if (confirmation) {
+      this.stimulate("TaskReflex#destroy", event.currentTarget)
+    }
   }
 }
